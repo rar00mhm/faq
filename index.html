@@ -3,53 +3,61 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Kommunalvalg 2025 – Ofte stillede spørgsmål</title>
+<title>Kommunalvalg 2025 – FAQ</title>
 <style>
   body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
-    background: #fff;
     color: #111;
+    background: #fff;
   }
   .wrap {
-    max-width: 800px;
-    margin: 30px auto;
+    max-width: 900px;
+    margin: 0 auto;
     border: 2px solid #000;
-    padding: 20px;
   }
+
+  /* Introduktion */
   .intro {
     text-align: center;
-    padding: 20px;
+    padding: 30px 20px;
     border-bottom: 2px solid #000;
   }
   .intro h1 {
     font-size: 28px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
   .intro img {
-    width: 120px;
-    margin: 15px auto;
+    width: 100px;
+    display: block;
+    margin: 0 auto 10px;
   }
   .intro p {
     font-size: 16px;
-    margin: 0;
   }
-  .faq {
-    border-top: 2px solid #000;
-  }
+
+  /* FAQ sektion */
   .item {
     border-bottom: 2px solid #000;
   }
-  .question {
+  .qbtn {
     display: grid;
-    grid-template-columns: 50px 1fr;
+    grid-template-columns: 50px 40px 1fr;
     align-items: center;
-    padding: 12px;
+    width: 100%;
+    padding: 16px;
+    background: transparent;
+    border: 0;
     cursor: pointer;
+    text-align: left;
+  }
+  .num {
+    font-weight: bold;
+    font-size: 24px;
   }
   .box {
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
     border: 2px solid #000;
     position: relative;
   }
@@ -69,14 +77,17 @@
   .item.open .box::after {
     transform: translateY(-50%) rotate(-45deg);
   }
-  .question h2 {
-    font-size: 20px;
-    margin: 0;
+  .qtext {
+    font-weight: bold;
+    font-size: 22px;
   }
+
   .answer {
     display: none;
-    padding: 0 12px 12px 12px;
-    background: #f9f9f9;
+    padding: 0 16px 16px 16px;
+    font-size: 17px;
+    line-height: 1.6;
+    background: #fafafa;
   }
   .item.open .answer {
     display: block;
@@ -85,67 +96,74 @@
 </head>
 <body>
 <div class="wrap">
+
   <div class="intro">
     <h1>20 ting du skal vide om kommunalvalget 2025</h1>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Pencil_icon.svg/120px-Pencil_icon.svg.png" alt="Kommunalvalg ikon">
-    <p>✔️ Sæt kryds i rubrikken for at se svar på alle spørgsmål</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Pencil_icon.svg" alt="Kommunalvalg ikon">
+    <p>✏️ Sæt kryds i rubrikken for at se svar på alle spørgsmål</p>
   </div>
 
+  <!-- FAQ start -->
   <div class="faq">
 
     <div class="item">
-      <div class="question">
-        <div class="box"></div>
-        <h2>Hvornår kan jeg stemme til kommunalvalget?</h2>
-      </div>
+      <button class="qbtn">
+        <span class="num">1</span>
+        <span class="box"></span>
+        <span class="qtext">Hvornår kan jeg stemme til kommunalvalget?</span>
+      </button>
       <div class="answer">
         <p>Kommunalvalget finder altid sted den tredje tirsdag i november hvert fjerde år. I år 2025 er datoen derfor tirsdag den 18. november 2025.</p>
       </div>
     </div>
 
     <div class="item">
-      <div class="question">
-        <div class="box"></div>
-        <h2>Hvorfor er kommunalvalget vigtigt?</h2>
-      </div>
+      <button class="qbtn">
+        <span class="num">2</span>
+        <span class="box"></span>
+        <span class="qtext">Hvorfor er kommunalvalget vigtigt?</span>
+      </button>
       <div class="answer">
         <p>Fordi mange af de beslutninger, der påvirker din hverdag, bliver truffet lokalt. Det handler om alt fra børnepasning til veje, kultur og klimaindsats i dit nærområde.</p>
       </div>
     </div>
 
     <div class="item">
-      <div class="question">
-        <div class="box"></div>
-        <h2>Hvad er forskellen på kommunal- og regionsvalg?</h2>
-      </div>
+      <button class="qbtn">
+        <span class="num">3</span>
+        <span class="box"></span>
+        <span class="qtext">Hvad er forskellen på kommunal- og regionsvalg?</span>
+      </button>
       <div class="answer">
-        <p><strong>Kommunalvalget</strong> handler om at vælge medlemmer til kommunalbestyrelserne i de enkelte kommuner. Kommunerne står for opgaver som skoler, daginstitutioner, ældrepleje, miljø og kultur.</p>
-        <p><strong>Regionsvalget</strong> handler om at vælge medlemmer til regionsrådene, som har ansvar for sundhedsvæsenet – hospitaler, psykiatri og kollektiv trafik.</p>
+        <p><strong>Kommunalvalget</strong> handler om at vælge medlemmer til kommunalbestyrelserne i de enkelte kommuner. Kommunerne er ansvarlige for lokale opgaver som skole, ældrepleje, miljø og kultur.</p>
+        <p><strong>Regionsvalget</strong> handler om at vælge medlemmer til regionsrådene, som primært har ansvar for sundhedsvæsenet, herunder hospitaler og kollektiv trafik.</p>
       </div>
     </div>
 
     <div class="item">
-      <div class="question">
-        <div class="box"></div>
-        <h2>Hvem kan stemme?</h2>
-      </div>
+      <button class="qbtn">
+        <span class="num">4</span>
+        <span class="box"></span>
+        <span class="qtext">Hvem kan stemme?</span>
+      </button>
       <div class="answer">
-        <p>Du kan stemme, hvis du er fyldt 18 år på valgdagen og har fast bopæl i kommunen, samt opfylder ét af disse kriterier:</p>
+        <p>Du kan stemme, hvis du på valgdagen er fyldt 18 år og har fast bopæl i kommunen, og enten:</p>
         <ul>
-          <li>Du er dansk statsborger.</li>
-          <li>Du er statsborger i et EU-land, Island eller Norge.</li>
-          <li>Du har haft fast bopæl i Danmark i de sidste 4 år forud for valgdagen.</li>
+          <li>er dansk statsborger,</li>
+          <li>er statsborger i et EU-land, Island eller Norge, eller</li>
+          <li>har haft fast bopæl i Danmark i de sidste 4 år forud for valgdagen.</li>
         </ul>
       </div>
     </div>
 
     <div class="item">
-      <div class="question">
-        <div class="box"></div>
-        <h2>Kan udlændinge stemme?</h2>
-      </div>
+      <button class="qbtn">
+        <span class="num">5</span>
+        <span class="box"></span>
+        <span class="qtext">Kan udlændinge stemme?</span>
+      </button>
       <div class="answer">
-        <p>Ja. Udlændinge kan stemme til kommunalvalg, hvis de er fyldt 18 år og har fast bopæl i kommunen. Det gælder også EU-borgere samt borgere fra Island, Norge og Storbritannien. Andre udlændinge skal have boet mindst fire år i Danmark, Grønland eller på Færøerne.</p>
+        <p>Ja. Udlændinge kan stemme til kommunalvalg, hvis de er fyldt 18 år og har fast bopæl i kommunen. Det gælder EU-borgere samt borgere fra Island, Norge og Storbritannien. Andre udlændinge skal have boet mindst fire år i Danmark, Grønland eller på Færøerne.</p>
       </div>
     </div>
 
@@ -153,10 +171,10 @@
 </div>
 
 <script>
-  // Klik for at åbne/lukke
-  document.querySelectorAll('.question').forEach(q => {
-    q.addEventListener('click', () => {
-      q.parentElement.classList.toggle('open');
+  // Klik for at åbne/lukke og vise kryds
+  document.querySelectorAll('.qbtn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.item').classList.toggle('open');
     });
   });
 </script>
