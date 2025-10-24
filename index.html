@@ -1,242 +1,249 @@
 <!doctype html>
 <html lang="da">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kommunalvalg 2025 – Spørgsmål & Svar (FAQ)</title>
-  <meta name="description" content="Ofte stillede spørgsmål om kommunalvalget (KV25): stemmeret, valgsteder, kandidater, stemmeprocessen m.m." />
-  <style>
-    /* ——— Basestil inspireret af avislayout: smalt læsefelt, serif-typografi, diskrete delestreger ——— */
-    :root{
-      --ink:#1a1a1a;            /* tekst */
-      --paper:#f7f6f4;          /* baggrund */
-      --accent:#0d4f48;         /* link/markering */
-      --rule:#e3e0db;           /* delestreg */
-      --muted:#6b6b6b;          /* sekundær tekst */
-      --card:#ffffff;           /* kort/FAQ baggrund */
-    }
-    html,body{height:100%}
-    body{
-      margin:0; color:var(--ink); background:var(--paper);
-      font: 17px/1.6 Georgia, Cambria, "Times New Roman", Times, serif;
-      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
-    }
-    a{color:var(--accent); text-decoration: none}
-    a:hover{text-decoration: underline}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>KV25 – Enkel FAQ</title>
+<style>
+  :root{
+    --ink:#111;
+    --muted:#666;
+    --rule:#222;
+    --bg:#fff;
+    --hl:#fff7b1;  /* til evt. fremhævet tekst i svar */
+  }
+  body{margin:0; font:18px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Segoe UI Emoji";}
+  .wrap{max-width:880px; margin:0 auto; padding:20px 16px}
+  .faq{border:2px solid var(--rule); background:var(--bg)}
+  .item{border-bottom:2px solid var(--rule)}
+  .item:last-child{border-bottom:0}
 
-    /* Layout */
-    .wrap{max-width: 820px; margin: 0 auto; padding: 24px 16px 80px}
-    header.nav{
-      font: 13px/1.2 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      color: var(--muted); letter-spacing:.02em;
-      margin: 8px auto 12px; max-width: 880px; padding: 10px 16px; 
-    }
-    .crumbs{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
-    .crumbs a{color:var(--muted)}
-    .crumbs .sep{opacity:.5}
+  /* Række med nummer + checkbox + spørgsmål */
+  .qbtn{
+    width:100%; display:grid; grid-template-columns: 60px 46px 1fr;
+    align-items:center; gap:14px; padding:18px 16px; background:transparent; border:0; cursor:pointer;
+    text-align:left;
+  }
+  .num{font-weight:800; font-size:32px; color:var(--ink); letter-spacing:.5px}
+  .box{
+    width:36px; height:36px; border:3px solid var(--ink); position:relative;
+  }
+  /* Kryds når .open */
+  .item.open .box::before,
+  .item.open .box::after{
+    content:""; position:absolute; left:6px; right:6px; top:50%; height:3px; background:var(--ink);
+  }
+  .item.open .box::before{transform:translateY(-50%) rotate(45deg)}
+  .item.open .box::after{transform:translateY(-50%) rotate(-45deg)}
 
-    .hero{padding: 12px 0 8px}
-    .hero h1{font-size: clamp(34px, 6vw, 48px); line-height:1.15; margin: 8px 0 6px}
-    .hero .dek{color:var(--muted); font-size:18px; max-width: 60ch}
+  .qtext{font-weight:800; font-size:28px; line-height:1.25}
+  @media (max-width:700px){
+    .qtext{font-size:22px}
+    .num{font-size:28px}
+  }
 
-    .divider{height:1px; background:var(--rule); margin: 18px 0}
-
-    /* Indholdsfortegnelse */
-    .toc{display:flex; gap:8px; flex-wrap:wrap; margin: 14px 0 22px}
-    .toc a{display:inline-block; border:1px solid var(--rule); background:#fff; padding:8px 10px; border-radius:8px; font-size:15px}
-    .toc a:hover{background:#fafafa}
-
-    /* FAQ-accordion */
-    section.faq-group{margin: 28px 0 36px}
-    section.faq-group h2{font-size: 26px; line-height:1.25; margin: 0 0 8px}
-    details.faq{background: var(--card); border:1px solid var(--rule); border-radius:10px; padding: 12px 14px; margin: 8px 0}
-    details.faq[open]{background: #fff}
-    summary.q{list-style:none; cursor:pointer; position:relative; padding-right: 28px; font-weight:600}
-    summary.q::-webkit-details-marker{display:none}
-    /* plus/minus indikator */
-    summary.q::after{
-      content: "+"; position:absolute; right:2px; top:0; font: 22px/1 ui-sans-serif, system-ui; color:var(--accent)
-    }
-    details[open] > summary.q::after{content: "–"}
-    .a{margin: 8px 0 0; color:#1f1f1f}
-    .note{color:var(--muted); font-size: 14px}
-
-    /* Sticky side-TOC på brede skærme */
-    @media (min-width: 1060px){
-      .page{display:grid; grid-template-columns: 220px 1fr; gap:28px; align-items:start}
-      .side{position:sticky; top:14px}
-      .side h3{margin:8px 0 10px; font-size:16px}
-      .side a{display:block; padding:6px 0; color:var(--accent)}
-      .wrap{max-width: 1040px}
-    }
-
-    /* Flydende chat-knap + panel (linker til sektioner frem for at svare) */
-    .chat{position:fixed; right:18px; bottom:18px; z-index:9999; width:320px; font: 15px/1.4 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial}
-    .chat button.toggle{background:var(--accent); color:#fff; border:0; padding:10px 12px; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,.15); cursor:pointer; font-weight:600}
-    .chat .panel{display:none; margin-top:8px; background:#fff; border:1px solid var(--rule); border-radius:12px; box-shadow:0 12px 28px rgba(0,0,0,.15); overflow:hidden}
-    .chat.open .panel{display:block}
-    .panel .head{padding:10px 12px; background:#f3f1ee; font-weight:600}
-    .panel .body{padding:10px 12px; max-height: 360px; overflow:auto}
-    .panel .body a{display:block; padding:8px 10px; border-radius:8px; text-decoration:none; color:var(--ink); border:1px solid var(--rule); margin:6px 0}
-    .panel .body a:hover{background:#faf9f7}
-  </style>
+  /* Svarfelt */
+  .answer{display:none; padding:0 16px 18px 16px}
+  .item.open .answer{display:block}
+  .answer p{margin:10px 0}
+  .muted{color:var(--muted); font-size:16px}
+  mark{background:var(--hl)}
+</style>
 </head>
 <body>
-  <!-- Top-brødkrumme som i en avisportal -->
-  <header class="nav" aria-label="Brødkrumme">
-    <nav class="crumbs">
-      <a href="#">Forside</a>
-      <span class="sep">›</span>
-      <a href="#">Kommunalvalg</a>
-      <span class="sep">›</span>
-      <span>FAQ</span>
-    </nav>
-  </header>
+<div class="wrap">
+  <div class="faq" id="faq">
 
-  <main class="wrap">
-    <div class="hero">
-      <h1>Kommunalvalg 2025 — Spørgsmål & svar</h1>
-      <p class="dek">Alt det praktiske om KV25: stemmeret, valgsteder, kandidater og selve processen — samlet ét sted i et roligt, læsbart avislayout.</p>
-    </div>
-    <div class="divider"></div>
-
-    <!-- To-spaltet layout på store skærme: venstreside som fast indholdsoversigt -->
-    <div class="page">
-      <aside class="side" aria-label="Indholdsoversigt">
-        <h3>Hop til sektion</h3>
-        <a href="#generelt">Generel information</a>
-        <a href="#stemmeret">Stemmeret & valgsteder</a>
-        <a href="#stemmeproces">Selve stemmeprocessen</a>
-        <a href="#kandidater">Kandidater, partier & valgforbund</a>
-        <a href="#lokalpolitik">Aktuel lokalpolitik & byråd</a>
-      </aside>
-
-      <article>
-        <!-- Hurtig-Tags lige under hero på mobile -->
-        <nav class="toc" aria-label="Hurtigvalg (mobil)">
-          <a href="#generelt">Generelt</a>
-          <a href="#stemmeret">Stemmeret</a>
-          <a href="#stemmeproces">Stemmeproces</a>
-          <a href="#kandidater">Kandidater</a>
-          <a href="#lokalpolitik">Lokalpolitik</a>
-        </nav>
-
-        <!-- ——— Sektion: Generelt ——— -->
-        <section id="generelt" class="faq-group" aria-labelledby="h-generelt">
-          <h2 id="h-generelt">Generel information om kommunalvalget</h2>
-          <details class="faq"><summary class="q">Hvornår kan jeg stemme til kommunalvalget?</summary>
-            <div class="a"><p>Kommunalvalget afholdes tirsdag den 18. november 2025. Du kan stemme på selve valgdagen eller brevstemme i ugerne op til.</p></div>
-          </details>
-          <details class="faq"><summary class="q">Hvorfor er kommunalvalget vigtigt?</summary>
-            <div class="a"><p>Valget afgør, hvem der prioriterer kommunens budget for skoler, ældrepleje, kultur, miljø m.m. i de næste fire år.</p></div>
-          </details>
-          <details class="faq"><summary class="q">Hvad er forskellen på kommunal- og regionsvalg?</summary>
-            <div class="a"><p>Kommunalvalget handler om lokale forhold i din kommune. Regionsvalget vedrører bl.a. sundhedsvæsen og regional trafik. De afholdes samtidig.</p></div>
-          </details>
-          <details class="faq"><summary class="q">Kan jeg stille op til kommunalvalg?</summary>
-            <div class="a"><p>Ja. Alle stemmeberettigede over 18 år kan stille op via et parti eller en lokalliste i henhold til reglerne for opstilling.</p></div>
-          </details>
-        </section>
-
-        <!-- ——— Sektion: Stemmeret & valgsteder ——— -->
-        <section id="stemmeret" class="faq-group" aria-labelledby="h-stemmeret">
-          <h2 id="h-stemmeret">Stemmeret og valgsteder</h2>
-          <details class="faq"><summary class="q">Hvem kan stemme?</summary>
-            <div class="a"><p>Danske statsborgere med bopæl i kommunen og fyldt 18 år. Visse udlændinge med fast ophold kan også stemme, se nedenfor.</p></div>
-          </details>
-          <details class="faq"><summary class="q">Kan udlændinge stemme?</summary>
-            <div class="a"><p>Ja. EU-borgere, nordmænd og islændinge bosat i Danmark kan stemme. Andre udlændinge kan stemme efter tre års lovligt ophold.</p></div>
-          </details>
-          <details class="faq"><summary class="q">Hvordan finder jeg mit valgsted?</summary>
-            <div class="a"><p>Adressen står på dit valgkort. Du kan også slå det op via borger.dk eller kommunens hjemmeside.</p></div>
-          </details>
-          <details class="faq"><summary class="q">Hvor stemmer jeg?</summary>
-            <div class="a"><p>Du stemmer på det valgsted, som fremgår af valgkortet for din bopælsadresse.</p></div>
-          </details>
-          <details class="faq"><summary class="q">Kan jeg brevstemme?</summary>
-            <div class="a"><p>Ja. Brevstemme kan som udgangspunkt afgives på Borgerservice fra ca. seks uger før valgdagen. Medbring gyldig legitimation.</p></div>
-          </details>
-        </section>
-
-        <!-- ——— Sektion: Stemmeprocessen ——— -->
-        <section id="stemmeproces" class="faq-group" aria-labelledby="h-proces">
-          <h2 id="h-proces">Selve stemmeprocessen</h2>
-          <details class="faq"><summary class="q">Hvordan stemmer jeg?</summary>
-            <div class="a"><p>Du modtager en stemmeseddel i lokalet og sætter <strong>ét</strong> kryds ved et parti eller en kandidat. Ét kryds = gyldig stemme.</p></div>
-          </details>
-          <details class="faq"><summary class="q">Må jeg tage et billede af min stemmeseddel?</summary>
-            <div class="a"><p>Nej. Foto i stemmelokalet er ikke tilladt af hensyn til hemmelig afstemning og ro i lokalet.</p></div>
-          </details>
-          <details class="faq"><summary class="q">Må jeg have mit barn med ind i stemmeboksen?</summary>
-            <div class="a"><p>Ja, hvis du selv kan stemme uden hjælp. Tvivlsspørgsmål afgøres af valgtilforordnede på stedet.</p></div>
-          </details>
-        </section>
-
-        <!-- ——— Sektion: Kandidater & valgforbund ——— -->
-        <section id="kandidater" class="faq-group" aria-labelledby="h-kand">
-          <h2 id="h-kand">Kandidater, partier og valgforbund</h2>
-          <details class="faq"><summary class="q">Hvor kan jeg finde information om kandidaterne?</summary>
-            <div class="a"><p>Kandidatoversigter offentliggøres af kommunen og dækkes af lokale medier. Hold øje med kommunens valgside.</p></div>
-          </details>
-          <details class="faq"><summary class="q">Hvem kan jeg stemme på / Hvem er kandidaterne?</summary>
-            <div class="a"><p>Du kan stemme på opstillede partier og lister i din kommune samt de tilhørende kandidater.</p></div>
-          </details>
-          <details class="faq"><summary class="q">Hvor mange partier stiller op i 2025?</summary>
-            <div class="a"><p>Antallet varierer mellem kommuner. Både landsdækkende partier og lokale lister plejer at stille op.</p></div>
-          </details>
-          <details class="faq"><summary class="q">Hvem er i valgforbund?</summary>
-            <div class="a"><p>Valgforbund offentliggøres sammen med kandidatlisterne før valget. Se kommunens officielle materiale.</p></div>
-          </details>
-          <details class="faq"><summary class="q">Hvor kan jeg tage en kandidattest?</summary>
-            <div class="a"><p>Medier som DR/TV 2 udgiver typisk kandidattests op til valget. Følg med på deres valgsider.</p></div>
-          </details>
-        </section>
-
-        <!-- ——— Sektion: Lokalpolitik & byråd ——— -->
-        <section id="lokalpolitik" class="faq-group" aria-labelledby="h-lokal">
-          <h2 id="h-lokal">Aktuel lokalpolitik og byråd</h2>
-          <details class="faq"><summary class="q">Hvem sidder i byrådet i dag?</summary>
-            <div class="a"><p>Se den aktuelle konstituering og udvalgspladser på kommunens hjemmeside under “Byråd”.</p></div>
-          </details>
-          <details class="faq"><summary class="q">Hvem er borgmester i min kommune?</summary>
-            <div class="a"><p>Borgmesterens navn og kontakt findes på kommunens hjemmeside. Borgmesteren vælges af byrådet efter valget.</p></div>
-          </details>
-        </section>
-
-        <p class="note">Bemærk: Ovenstående er et generelt eksempel. Indsæt gerne lokale detaljer, datoer og links for din kommune, så brugerne får præcis vejledning.</p>
-      </article>
-    </div>
-  </main>
-
-  <!-- Chat-widget som åbner genveje til sektioner (samme side eller din /faq.html) -->
-  <div class="chat" id="valgChat">
-    <button class="toggle" onclick="document.getElementById('valgChat').classList.toggle('open')">💬 Spørg ValgBot</button>
-    <div class="panel" role="dialog" aria-label="ValgBot genveje">
-      <div class="head">Få hjælp til KV25</div>
-      <div class="body">
-        <a href="#generelt" onclick="closeChat()">🗳️ Generel information</a>
-        <a href="#stemmeret" onclick="closeChat()">🧾 Stemmeret & valgsteder</a>
-        <a href="#stemmeproces" onclick="closeChat()">🗂️ Stemmeprocessen</a>
-        <a href="#kandidater" onclick="closeChat()">👥 Kandidater & partier</a>
-        <a href="#lokalpolitik" onclick="closeChat()">🏛️ Lokalpolitik & byråd</a>
+    <!-- GENERELT -->
+    <div class="item" id="q1">
+      <button class="qbtn" aria-expanded="false" aria-controls="a1">
+        <span class="num">1</span><span class="box" aria-hidden="true"></span>
+        <span class="qtext">Hvad er et kommunalvalg?</span>
+      </button>
+      <div class="answer" id="a1" role="region" aria-labelledby="q1">
+        <p>Ved kommunalvalget vælger vi de politikere, der udgør byrådet de næste fire år. De prioriterer bl.a. økonomi til skoler, ældre, kultur og lokal udvikling.</p>
+        <p class="muted">Tilpas teksten til din kommune/medie – fx link til jeres temaside.</p>
       </div>
     </div>
+
+    <div class="item" id="q2">
+      <button class="qbtn" aria-expanded="false" aria-controls="a2">
+        <span class="num">2</span><span class="box" aria-hidden="true"></span>
+        <span class="qtext">Hvornår er der kommunalvalg?</span>
+      </button>
+      <div class="answer" id="a2" role="region" aria-labelledby="q2">
+        <p>Næste kommunalvalg afholdes i november 2025. Den præcise dato fastsættes nationalt. Tjek de officielle valgoplysninger for opdateringer.</p>
+      </div>
+    </div>
+
+    <!-- STEMME-DAG/VALGSTED -->
+    <div class="item" id="q3">
+      <button class="qbtn" aria-expanded="false" aria-controls="a3">
+        <span class="num">3</span><span class="box" aria-hidden="true"></span>
+        <span class="qtext">Hvor og hvornår kan jeg stemme på valgdagen?</span>
+      </button>
+      <div class="answer" id="a3" role="region" aria-labelledby="q3">
+        <p>Dit valgsted står på valgkortet, som sendes til din folkeregisteradresse. Åbningstider fremgår af kortet og kommunens hjemmeside.</p>
+      </div>
+    </div>
+
+    <!-- VALGSYSTEM -->
+    <div class="item" id="q4">
+      <button class="qbtn" aria-expanded="false" aria-controls="a4">
+        <span class="num">4</span><span class="box" aria-hidden="true"></span>
+        <span class="qtext">Hvordan fungerer valgsystemet?</span>
+      </button>
+      <div class="answer" id="a4" role="region" aria-labelledby="q4">
+        <p>Du har én stemme, som kan gives til et parti (listestemme) eller en kandidat (personlig stemme) på samme liste. Mandater fordeles forholdsmæssigt.</p>
+      </div>
+    </div>
+
+    <!-- STEMMERET -->
+    <div class="item" id="q5">
+      <button class="qbtn" aria-expanded="false" aria-controls="a5">
+        <span class="num">5</span><span class="box" aria-hidden="true"></span>
+        <span class="qtext">Hvem kan stemme?</span>
+      </button>
+      <div class="answer" id="a5" role="region" aria-labelledby="q5">
+        <p>Du kan stemme, hvis du er fyldt 18 år og har bopæl i kommunen. Visse udenlandske statsborgere kan også stemme (se næste punkt).</p>
+      </div>
+    </div>
+
+    <div class="item" id="q6">
+      <button class="qbtn" aria-expanded="false" aria-controls="a6">
+        <span class="num">6</span><span class="box" aria-hidden="true"></span>
+        <span class="qtext">Kan udlændinge stemme?</span>
+      </button>
+      <div class="answer" id="a6" role="region" aria-labelledby="q6">
+        <p>Ja. EU-borgere, nordmænd og islændinge bosat i Danmark kan stemme. Andre udlændinge kan stemme efter tre års lovligt ophold.</p>
+      </div>
+    </div>
+
+    <!-- VALGSTED / BREVSTEMME -->
+    <div class="item" id="q7">
+      <button class="qbtn" aria-expanded="false" aria-controls="a7">
+        <span class="num">7</span><span class="box" aria-hidden="true"></span>
+        <span class="qtext">Hvordan finder jeg mit valgsted?</span>
+      </button>
+      <div class="answer" id="a7" role="region" aria-labelledby="q7">
+        <p>Adressen står på dit valgkort. Du kan også slå det op via borger.dk eller kommunens valgside.</p>
+      </div>
+    </div>
+
+    <div class="item" id="q8">
+      <button class="qbtn" aria-expanded="false" aria-controls="a8">
+        <span class="num">8</span><span class="box" aria-hidden="true"></span>
+        <span class="qtext">Kan jeg brevstemme?</span>
+      </button>
+      <div class="answer" id="a8" role="region" aria-labelledby="q8">
+        <p>Ja. Som udgangspunkt kan du brevstemme på Borgerservice fra ca. seks uger før valgdagen. Medbring gyldig legitimation.</p>
+      </div>
+    </div>
+
+    <!-- PROCES / REGLER -->
+    <div class="item" id="q9">
+      <button class="qbtn" aria-expanded="false" aria-controls="a9">
+        <span class="num">9</span><span class="box" aria-hidden="true"></span>
+        <span class="qtext">Hvordan stemmer jeg?</span>
+      </button>
+      <div class="answer" id="a9" role="region" aria-labelledby="q9">
+        <p>Du sætter <strong>ét</strong> kryds på stemmesedlen – ved et parti eller en kandidat. Ét kryds = gyldig stemme.</p>
+      </div>
+    </div>
+
+    <div class="item" id="q10">
+      <button class="qbtn" aria-expanded="false" aria-controls="a10">
+        <span class="num">10</span><span class="box" aria-hidden="true"></span>
+        <span class="qtext">Må jeg tage et billede af min stemmeseddel?</span>
+      </button>
+      <div class="answer" id="a10" role="region" aria-labelledby="q10">
+        <p>Nej. Det er ikke tilladt at fotografere i stemmelokalet af hensyn til hemmelig afstemning.</p>
+      </div>
+    </div>
+
+    <div class="item" id="q11">
+      <button class="qbtn" aria-expanded="false" aria-controls="a11">
+        <span class="num">11</span><span class="box" aria-hidden="true"></span>
+        <span class="qtext">Må jeg have mit barn med ind i stemmeboksen?</span>
+      </button>
+      <div class="answer" id="a11" role="region" aria-labelledby="q11">
+        <p>Ja, så længe du kan stemme uden hjælp. Valgtilforordnede kan vejlede i tvivlstilfælde.</p>
+      </div>
+    </div>
+
+    <!-- KANDIDATER / LOKALPOLITIK -->
+    <div class="item" id="q12">
+      <button class="qbtn" aria-expanded="false" aria-controls="a12">
+        <span class="num">12</span><span class="box" aria-hidden="true"></span>
+        <span class="qtext">Hvor kan jeg finde information om kandidaterne?</span>
+      </button>
+      <div class="answer" id="a12" role="region" aria-labelledby="q12">
+        <p>Se kommunens officielle kandidatlister og lokale medier. Mange kandidater har også egne sider.</p>
+      </div>
+    </div>
+
+    <div class="item" id="q13">
+      <button class="qbtn" aria-expanded="false" aria-controls="a13">
+        <span class="num">13</span><span class="box" aria-hidden="true"></span>
+        <span class="qtext">Hvor mange partier stiller op i 2025?</span>
+      </button>
+      <div class="answer" id="a13" role="region" aria-labelledby="q13">
+        <p>Det varierer mellem kommuner. Både landsdækkende partier og lokale lister deltager typisk.</p>
+      </div>
+    </div>
+
+    <div class="item" id="q14">
+      <button class="qbtn" aria-expanded="false" aria-controls="a14">
+        <span class="num">14</span><span class="box" aria-hidden="true"></span>
+        <span class="qtext">Hvem er i valgforbund?</span>
+      </button>
+      <div class="answer" id="a14" role="region" aria-labelledby="q14">
+        <p>Valgforbund offentliggøres sammen med kandidatlisterne. Tjek kommunens valgside for den endelige oversigt.</p>
+      </div>
+    </div>
+
+    <div class="item" id="q15">
+      <button class="qbtn" aria-expanded="false" aria-controls="a15">
+        <span class="num">15</span><span class="box" aria-hidden="true"></span>
+        <span class="qtext">Hvor kan jeg tage en kandidattest?</span>
+      </button>
+      <div class="answer" id="a15" role="region" aria-labelledby="q15">
+        <p>Medier som DR/TV 2 og lokale aviser offentliggør kandidattests op til valget.</p>
+      </div>
+    </div>
+
+    <div class="item" id="q16">
+      <button class="qbtn" aria-expanded="false" aria-controls="a16">
+        <span class="num">16</span><span class="box" aria-hidden="true"></span>
+        <span class="qtext">Hvem sidder i byrådet i dag?</span>
+      </button>
+      <div class="answer" id="a16" role="region" aria-labelledby="q16">
+        <p>Se den aktuelle sammensætning på kommunens hjemmeside under “Byråd”.</p>
+      </div>
+    </div>
+
+    <div class="item" id="q17">
+      <button class="qbtn" aria-expanded="false" aria-controls="a17">
+        <span class="num">17</span><span class="box" aria-hidden="true"></span>
+        <span class="qtext">Hvem er borgmester i min kommune?</span>
+      </button>
+      <div class="answer" id="a17" role="region" aria-labelledby="q17">
+        <p>Borgmesterens navn og kontakt findes på kommunens hjemmeside.</p>
+      </div>
+    </div>
+
   </div>
+</div>
 
-  <script>
-    function closeChat(){ document.getElementById('valgChat').classList.remove('open'); }
-  </script>
-
-  <!-- (Valgfrit) Struktureret data for SEO – FAQPage. Udvid med alle Q/A ved behov. -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {"@type":"Question","name":"Hvornår kan jeg stemme til kommunalvalget?","acceptedAnswer":{"@type":"Answer","text":"Kommunalvalget afholdes tirsdag den 18. november 2025. Du kan stemme på dagen eller brevstemme i ugerne op til."}},
-      {"@type":"Question","name":"Kan jeg brevstemme?","acceptedAnswer":{"@type":"Answer","text":"Ja. Du kan som udgangspunkt brevstemme på Borgerservice fra ca. seks uger før valgdagen. Medbring legitimation."}}
-    ]
-  }
-  </script>
+<script>
+  // Enkel, tilgængelig toggle: sæt/afmeld .open og aria-expanded
+  document.querySelectorAll('.item .qbtn').forEach((btn)=>{
+    btn.addEventListener('click', ()=>{
+      const item = btn.closest('.item');
+      const isOpen = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  });
+</script>
 </body>
 </html>
